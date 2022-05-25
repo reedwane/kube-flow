@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Masonry } from "@mui/lab";
-import { Box, Container, Card, Typography, CardHeader } from "@mui/material";
+import { Box, Container, Card, CardHeader } from "@mui/material";
 
 interface ICardsProps {}
 

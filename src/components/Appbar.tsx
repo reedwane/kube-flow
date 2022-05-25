@@ -4,7 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "assets/logo.svg";
-import { Box, Typography, Button, Tooltip } from "@mui/material";
+import { Box, Typography, Tooltip } from "@mui/material";
 import { LogoutOutlined, StorageRounded } from "@mui/icons-material";
 
 interface IAppbarProps {}
