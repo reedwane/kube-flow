@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
-import { Box, createTheme } from "@mui/material";
+import { Box, createTheme, CssBaseline } from "@mui/material";
 import Appbar from "components/Appbar";
 import Cards from "components/Cards";
 import SideDrawer from "components/SideDrawer";
@@ -12,6 +12,9 @@ const theme = createTheme({
       main: "#0a3b71",
     },
   },
+  typography: {
+    fontFamily: ["Open Sans", "sans-serif"].join(","),
+  },
 });
 
 function App() {
@@ -19,6 +22,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <div className="App">
         <Box
           sx={{
@@ -29,8 +33,8 @@ function App() {
 
           <Box
             component="nav"
-            sx={{ width: { lg: 240 }, flexShrink: { sm: 0 } }}
-            aria-label="mailbox folders"
+            sx={{ width: { lg: 240, md: "auto" }, flexShrink: { md: 0 } }}
+            aria-label="side drawer"
           >
             <SideDrawer open={open} setOpen={setOpen} />
           </Box>

@@ -1,6 +1,17 @@
-import { Drawer, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  Link,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { BiLinkExternal } from "react-icons/bi";
 import { AiFillHome } from "react-icons/ai";
+import logo from "assets/logo-light.svg";
+import styled from "@emotion/styled";
 
 interface ISideDrawerProps {
   open: boolean;
@@ -16,61 +27,138 @@ const SideDrawer: React.FunctionComponent<ISideDrawerProps> = ({
   };
 
   const matches = useMediaQuery("(min-width: 1200px)");
+  if (matches) setOpen(true);
+
+  const variant = matches ? "permanent" : "temporary";
+
+  const faintText = "rgba(255, 255, 255, 0.5)";
+
+  const Footer = styled(Box)`
+    position: fixed;
+    margin: 0 1.2em;
+    bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+  `;
 
   return (
     <>
-      {matches ? (
-        <Drawer
+      <CssBaseline />
+      <Drawer
+        sx={{
+          backgroundColor: "primary.main",
+          width: {
+            xs: "auto",
+            md: 240,
+          },
+        }}
+        color="secondary"
+        variant={variant}
+        open={open}
+        anchor="left"
+        onClose={handleOpenDrawer}
+      >
+        <Paper
+          color="inherit"
           sx={{
             width: 240,
-            "& .MuiDrawer-paper": {
-              width: 240,
-              boxSizing: "border-box",
-            },
+            height: "100%",
+            margin: 0,
+            backgroundColor: "primary.main",
+            br: 0,
           }}
-          color="primary"
-          variant="permanent"
-          open
-          anchor="left"
         >
-          <Typography variant="h5" color="initial">
+          <Box
+            component="img"
+            sx={{
+              m: 2,
+              mr: 4,
+              width: "80%",
+              maxWidth: 130,
+              maxHeight: 32,
+            }}
+            alt="logo"
+            src={logo}
+          />
+          <Typography
+            variant="h6"
+            color="common.white"
+            sx={{
+              height: 48,
+              fontSize: "1rem",
+              borderLeft: "3px solid white",
+              display: "flex",
+              alignItems: "center",
+              gap: 3,
+              pl: 2,
+              mb: 2,
+            }}
+          >
             <AiFillHome />
             Home
           </Typography>
-          <Typography variant="h5" color="initial">
-            GitHub <BiLinkExternal />
+
+          <Divider
+            sx={{
+              backgroundColor: faintText,
+              m: "1em 0.7em 2em",
+            }}
+          />
+
+          <Typography
+            variant="h6"
+            color={faintText}
+            sx={{
+              height: 48,
+              fontSize: "1rem",
+              pl: 2,
+            }}
+          >
+            <Link
+              href="https://github.com/kubeflow/kubeflow"
+              underline="none"
+              color={faintText}
+            >
+              GitHub <BiLinkExternal />
+            </Link>
           </Typography>
-          <Typography variant="h5" color="initial">
-            Documentation <BiLinkExternal />
+
+          <Typography
+            variant="h6"
+            color={faintText}
+            sx={{
+              height: 48,
+              fontSize: "1rem",
+              pl: 2,
+            }}
+          >
+            <Link
+              href="https://www.kubeflow.org/docs/about/kubeflow/"
+              underline="none"
+              color={faintText}
+            >
+              Documentation <BiLinkExternal />
+            </Link>
           </Typography>
-        </Drawer>
-      ) : (
-        <Drawer
-          sx={{
-            width: 240,
-            display: { xs: "block", lg: "none" },
-            "& .MuiDrawer-paper": {
-              width: 240,
-              boxSizing: "border-box",
-            },
-          }}
-          variant="temporary"
-          anchor="left"
-          open={open}
-          onClose={handleOpenDrawer}
-        >
-          <Typography variant="h5" color="initial">
-            <AiFillHome />
-            Home
-          </Typography>
-          <Typography variant="h5" color="initial">
-            GitHub <BiLinkExternal />
-          </Typography>
-          <Typography variant="h5" color="initial">
-            Documentation <BiLinkExternal />
-          </Typography>
-        </Drawer>
-      )}
+
+          <Footer sx={{ fontSize: 14 }}>
+            <Link href="https://policies.google.com/privacy" color={faintText}>
+              Privacy{" "}
+            </Link>
+            .
+            <Link
+              href="https://www.kubeflow.org/docs/other-guides/usage-reporting/"
+              color={faintText}
+            >
+              {" "}
+              Usage Reporting
+            </Link>
+            <Typography variant="body1" fontStyle={"italic"} color={faintText}>
+              build version dev_local
+            </Typography>
+          </Footer>
+        </Paper>
+      </Drawer>
     </>
   );
 };
