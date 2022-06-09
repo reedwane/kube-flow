@@ -2,6 +2,8 @@ import { ThemeProvider } from "@emotion/react";
 import { Box, createTheme } from "@mui/material";
 import Appbar from "components/Appbar";
 import Cards from "components/Cards";
+import SideDrawer from "components/SideDrawer";
+import { useState } from "react";
 import "./App.css";
 
 const theme = createTheme({
@@ -13,6 +15,8 @@ const theme = createTheme({
 });
 
 function App() {
+  const [open, setOpen] = useState(false);
+
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -21,8 +25,26 @@ function App() {
             display: "flex",
           }}
         >
-          <Appbar />
-          <Cards />
+          <Appbar open={open} setOpen={setOpen} />
+
+          <Box
+            component="nav"
+            sx={{ width: { sm: 240 }, flexShrink: { sm: 0 } }}
+            aria-label="mailbox folders"
+          >
+            <SideDrawer open={open} setOpen={setOpen} />
+          </Box>
+
+          <Box
+            component="main"
+            sx={{
+              flexGrow: 1,
+              p: 3,
+              width: { sm: `calc(100% - ${240}px)` },
+            }}
+          >
+            <Cards />
+          </Box>
         </Box>
       </div>
     </ThemeProvider>

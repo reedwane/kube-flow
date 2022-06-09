@@ -1,4 +1,3 @@
-import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -7,18 +6,35 @@ import logo from "assets/logo.svg";
 import { Box, Typography, Tooltip } from "@mui/material";
 import { LogoutOutlined, StorageRounded } from "@mui/icons-material";
 
-interface IAppbarProps {}
+interface IAppbarProps {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
 
-const Appbar: React.FunctionComponent<IAppbarProps> = (props) => {
+const Appbar: React.FunctionComponent<IAppbarProps> = ({ open, setOpen }) => {
+  const handleOpenDrawer = () => {
+    setOpen(!open);
+  };
+
   return (
     <>
-      <AppBar position="fixed" color="inherit" sx={{ display: "flex" }}>
+      <AppBar
+        position="fixed"
+        color="inherit"
+        sx={{
+          width: { lg: `calc(100% - ${240}px)` },
+          ml: { lg: `${240}px` },
+        }}
+      >
         <Toolbar>
           <IconButton
             aria-label="menu"
             color="primary"
+            onClick={handleOpenDrawer}
             sx={{
               mr: 2,
+              ...(open && { display: "none" }),
+              display: { lg: "none" },
             }}
           >
             <MenuIcon />
