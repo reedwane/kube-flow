@@ -29,7 +29,7 @@ function App() {
 
           <Box
             component="nav"
-            sx={{ width: { sm: 240 }, flexShrink: { sm: 0 } }}
+            sx={{ width: { lg: 240 }, flexShrink: { sm: 0 } }}
             aria-label="mailbox folders"
           >
             <SideDrawer open={open} setOpen={setOpen} />
@@ -40,7 +40,7 @@ function App() {
             sx={{
               flexGrow: 1,
               p: 3,
-              width: { sm: `calc(100% - ${240}px)` },
+              width: { lg: `calc(100% - ${240}px)` },
             }}
           >
             <Cards />
