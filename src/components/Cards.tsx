@@ -33,35 +33,37 @@ const Cards: React.FunctionComponent<ICardsProps> = () => {
             <Divider />
           </StyledCard>
 
-          <StyledCard>
-            <Typography variant="h5" color="initial" sx={textStyles}>
-              Recent Notebooks
-            </Typography>
-            <Divider />
-            <Typography variant="body2" color="initial" fontStyle={"italic"}>
-              Choose a namespace to see Notebooks
-            </Typography>
-          </StyledCard>
+          <Masonry columns={1} spacing={2}>
+            <StyledCard>
+              <Typography variant="h5" color="initial" sx={textStyles}>
+                Recent Notebooks
+              </Typography>
+              <Divider />
+              <Typography variant="body2" color="initial" fontStyle={"italic"}>
+                Choose a namespace to see Notebooks
+              </Typography>
+            </StyledCard>
 
-          <StyledCard>
-            <Typography variant="h5" color="initial" sx={textStyles}>
-              Recent Pipeline
-            </Typography>
-            <Divider />
-            <Typography variant="body2" color="initial" fontStyle={"italic"}>
-              Error retrieving Pipelines
-            </Typography>
-          </StyledCard>
+            <StyledCard>
+              <Typography variant="h5" color="initial" sx={textStyles}>
+                Recent Pipeline
+              </Typography>
+              <Divider />
+              <Typography variant="body2" color="initial" fontStyle={"italic"}>
+                Error retrieving Pipelines
+              </Typography>
+            </StyledCard>
 
-          <StyledCard>
-            <Typography variant="h5" color="initial" sx={textStyles}>
-              Recent Pipeline Runs
-            </Typography>
-            <Divider />
-            <Typography variant="body2" color="initial" fontStyle={"italic"}>
-              Error retrieving Pipeline Runs
-            </Typography>
-          </StyledCard>
+            <StyledCard>
+              <Typography variant="h5" color="initial" sx={textStyles}>
+                Recent Pipeline Runs
+              </Typography>
+              <Divider />
+              <Typography variant="body2" color="initial" fontStyle={"italic"}>
+                Error retrieving Pipeline Runs
+              </Typography>
+            </StyledCard>
+          </Masonry>
 
           <StyledCard>
             <Typography variant="h5" color="initial" sx={textStyles}>

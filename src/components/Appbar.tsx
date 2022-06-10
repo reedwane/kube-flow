@@ -4,11 +4,8 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "assets/logo.svg";
 import { Box, Typography, Tooltip } from "@mui/material";
-import {
-  ArrowDropDown,
-  LogoutOutlined,
-  StorageRounded,
-} from "@mui/icons-material";
+import { ArrowDropDown, LogoutOutlined } from "@mui/icons-material";
+import { GiCardboardBoxClosed } from "react-icons/gi";
 
 interface IAppbarProps {
   open: boolean;
@@ -73,7 +70,7 @@ const Appbar: React.FunctionComponent<IAppbarProps> = ({ open, setOpen }) => {
               }}
             >
               <IconButton aria-label="namespaces">
-                <StorageRounded />
+                <GiCardboardBoxClosed />
                 <Typography
                   variant="body1"
                   color="initial"
