@@ -4,7 +4,11 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "assets/logo.svg";
 import { Box, Typography, Tooltip } from "@mui/material";
-import { LogoutOutlined, StorageRounded } from "@mui/icons-material";
+import {
+  ArrowDropDown,
+  LogoutOutlined,
+  StorageRounded,
+} from "@mui/icons-material";
 
 interface IAppbarProps {
   open: boolean;
@@ -48,6 +52,7 @@ const Appbar: React.FunctionComponent<IAppbarProps> = ({ open, setOpen }) => {
               width: 100,
               maxHeight: { xs: 40, md: 40 },
               maxWidth: { xs: 130, md: 130 },
+              display: { lg: "none" },
             }}
             alt="logo"
             src={logo}
@@ -79,6 +84,7 @@ const Appbar: React.FunctionComponent<IAppbarProps> = ({ open, setOpen }) => {
                 >
                   No Namespaces
                 </Typography>
+                <ArrowDropDown />
               </IconButton>
             </Tooltip>
           </Box>

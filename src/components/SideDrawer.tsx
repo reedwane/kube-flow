@@ -27,9 +27,12 @@ const SideDrawer: React.FunctionComponent<ISideDrawerProps> = ({
   };
 
   const matches = useMediaQuery("(min-width: 1200px)");
+  const elevationMatch = useMediaQuery("(max-width: 900px)");
   if (matches) setOpen(true);
 
   const variant = matches ? "permanent" : "temporary";
+
+  const elevation = elevationMatch ? 0 : 1;
 
   const faintText = "rgba(255, 255, 255, 0.5)";
 
@@ -46,26 +49,32 @@ const SideDrawer: React.FunctionComponent<ISideDrawerProps> = ({
       <CssBaseline />
       <Drawer
         sx={{
-          backgroundColor: "primary.main",
+          backgroundColor: "#0a3b71",
           width: {
             xs: "auto",
             md: 240,
+            boxShadow: { xs: "none" },
+            "& .MuiDrawer-paper": {
+              boxShadow: { md: "none" },
+            },
           },
         }}
         color="secondary"
+        elevation={elevation}
         variant={variant}
         open={open}
         anchor="left"
         onClose={handleOpenDrawer}
       >
         <Paper
-          color="inherit"
+          // color="inherit"
+          square
           sx={{
             width: 240,
             height: "100%",
             margin: 0,
-            backgroundColor: "primary.main",
-            br: 0,
+            backgroundColor: { xs: "#051D38", md: "#0a3b71" },
+            elevation: { xs: 0 },
           }}
         >
           <Box
@@ -80,6 +89,7 @@ const SideDrawer: React.FunctionComponent<ISideDrawerProps> = ({
             alt="logo"
             src={logo}
           />
+
           <Typography
             variant="h6"
             color="common.white"
